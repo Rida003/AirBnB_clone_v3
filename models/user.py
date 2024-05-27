@@ -1,30 +1,24 @@
 #!/usr/bin/python3
-""" holds class User"""
+"""Defines the User class."""
 import models
-from models.base_model import BaseModel, Base
+import hashlib
+import sqlalchemy
 from os import getenv
-from sqlalchemy.orm import relationship
+from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
+from sqlalchemy.orm import relationship
 
 
 class User(BaseModel, Base):
     """Representation of a user """
-    if getenv('HBNB_TYPE_STORAGE') == 'db':
+    if models.storage_t == 'db':
         __tablename__ = 'users'
-        email = Column(String(128),
-                       nullable=False)
-        password = Column(String(128),
-                          nullable=False)
-        first_name = Column(String(128),
-                            nullable=True)
-        last_name = Column(String(128),
-                           nullable=True)
-        places = relationship("Place",
-                              backref="user",
-                              cascade="all, delete-orphan")
-        reviews = relationship("Review",
-                               backref="user",
-                               cascade="all, delete-orphan")
+        email = Column(String(128), nullable=False)
+        password = Column(String(128), nullable=False)
+        first_name = Column(String(128), nullable=True)
+        last_name = Column(String(128), nullable=True)
+        places = relationship("Place", backref="user")
+        reviews = relationship("Review", backref="user")
     else:
         email = ""
         password = ""
@@ -32,5 +26,12 @@ class User(BaseModel, Base):
         last_name = ""
 
     def __init__(self, *args, **kwargs):
-        """initializes user"""
+        """Initializes a User."""
         super().__init__(*args, **kwargs)
+
+    def __setattr__(self, name, value):
+        """Encodes passwords using MD5 before setting an attribute."""
+        if name == "password":
+            value = value.encode("utf-8")
+            value = hashlib.md5(value).hexdigest()
+        object.__setattr__(self, name, value)

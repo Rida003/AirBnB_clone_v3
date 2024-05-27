@@ -1,13 +1,2 @@
-# Files we don't need:
-*~
-\#*\#
 __pycache__/
-versions/
-*main*.py
-*.pyo
-*.pyc
-*.sql
 file.json
-.gitignore
-test_params_create
-test_get_count.py
