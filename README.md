@@ -183,26 +183,5 @@ ubuntu:~/Airbnb_clone_v3$ curl -X GET http://0.0.0.0:5000/api/v1/states/
 ```
 If State(s) don't exist, it should return a 404 error
 
-
-## Bugs
-No known bugs at this time. 
-
 ## Authors
-
-###### Version 3
-
-- Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://twitter.com/EarthToJHuang)
-- Joann Vuong - [Github](https://github.com/jvpupcat) / [Twitter](https://twitter.com/jv_pupcat)
-
-###### Version 2
-
-- Andrew Birnberg - [Github](https://github.com/birnbera) / [Twitter](https://twitter.com/birnbera)
-- Thomas Wang - [Github](https://github.com/thomaspwang) / [Twitter](https://twitter.com/outspokenasian)
-
-###### Version 1
-
-- Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)  
-- Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://twitter.com/earthtojhuang)
-
-## License
-Public Domain. No copywrite protection. 
+Rida Essahi
